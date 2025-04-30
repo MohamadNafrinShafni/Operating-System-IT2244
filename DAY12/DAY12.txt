@@ -1,0 +1,53 @@
+::Quiz
+
+Read three numbers(a,b,c) from the user and store them into three variables.
+Find the Least Common Multiple(LCM)
+from THE first two numbers (a,b)
+and Find the GCD for second two numbers
+
+
+::q1)printing multiplication table
+::predefined
+[[2021ict95@fedora ~]$ touch Quiz.sh
+[2021ict95@fedora ~]$ chmod 777 Quiz.sh
+[2021ict95@fedora ~]$ vi Quiz.sh
+[2021ict95@fedora ~]$ ./Quiz.sh
+
+echo "Enter number 1 (a):"
+read a
+
+echo "Enter number 2 (b):"
+read b
+
+echo "Enter number 3 (c):"
+read c
+
+
+x=$b
+y=$c
+while [ $y -ne 0 ]; do
+    temp=$y
+    y=$((x % y))
+    x=$temp
+done
+gcd_result=$x
+
+
+x=$a
+y=$b
+while [ $y -ne 0 ]; do
+    temp=$y
+    y=$((x % y))
+    x=$temp
+done
+gcd=$x
+lcm_result=$(( (a * b) / gcd ))
+
+
+echo "LCM of $a and $b is: $lcm_result"
+echo "GCD of $b and $c is: $gcd_result"
+
+
+
+
+
