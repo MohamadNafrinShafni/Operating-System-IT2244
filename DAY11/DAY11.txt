@@ -1,0 +1,128 @@
+::q1)printing multiplication table
+::predefined
+[2021ict95@fedora ~]$ touch Q1.sh
+[2021ict95@fedora ~]$ chmod 777 Q1.sh
+[2021ict95@fedora ~]$ vi Q1.sh
+[2021ict95@fedora ~]$ ./Q1.sh
+
+::vi Q1.sh
+
+echo Print mult
+for i in {1..10}
+do
+for j in {1..10}
+do
+result=$((i*j))
+echo "$i * $j = $result"
+done
+echo ""
+done
+
+::userinput
+
+echo "Enter a number"
+read num
+echo "Multiplication Table of $num"
+for((i=1;i<=12;i++))
+do
+mul=$(($i*$num))
+echo "$i x $num = " $mul
+done
+
+::Q2)Printing pattern
+::[2021ict95@fedora ~]$ touch Q2.sh
+[2021ict95@fedora ~]$ chmod 777 Q2.sh
+[2021ict95@fedora ~]$ vi Q2.sh
+[2021ict95@fedora ~]$ ./Q2.sh
+
+::vi Q2.sh
+
+#User input for rows
+echo "Enter the rows"
+read rows
+
+#top half
+
+for ((i=1;i<=rows;i++))
+do
+for((j=1;j<=rows-i;j++))
+do
+echo -n " "
+done
+for ((k=1;k<=((2*i-1));k++))
+do
+echo -n "*"
+done
+echo
+done
+
+#bottom half
+
+for ((i=rows-1;i>=1;i--))
+do
+for ((j=rows;j>i;j--))
+do
+echo -n " "
+done
+for ((k=1;k<=((2*i-1));k++))
+do
+echo -n "*"
+done
+echo
+done
+
+::output
+Enter the rows
+5
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+	
+::[2021ict95@fedora ~]$ touch Q3.sh
+[2021ict95@fedora ~]$ chmod 777 Q3.sh
+[2021ict95@fedora ~]$ vi Q3.sh
+[2021ict95@fedora ~]$ ./Q3.sh
+
+::vi Q3.sh
+
+Enter a number to find the fibonacci:
+10
+
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+
+
+echo "Enter a number to find the fibonacci: "
+read num
+
+echo " "
+
+a=0
+b=1
+
+for((i=0;i<num;i++))
+do
+echo $a
+
+
+c=$(($a+$b))
+a=$b
+b=$c
+
+done
+
+
