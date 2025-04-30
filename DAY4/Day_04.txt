@@ -1,0 +1,267 @@
+
+Implementation:
+
+01.To view the calendar
+------------------------
+command: $cal
+Description: Displays the calendar for the current month (March 2025 in this case).
+
+Output:
+{ ~ }  » cal                                                                                    ~
+     March 2025
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+
+LINUX DATE COMMANDS
+
+02.To display day of month
+---------------------------
+Command: date +%d
+Description: Displays the current day of the month (01-31).
+
+	explanation of command:
+	date -> Shows the date and time.
+	+%d -> Displays only the day (01-31)
+
+Output:
+{ ~ }  » date +%d                                                                            
+24
+
+03.To display the last two digits of the Year
+---------------------------------------------
+Command: date +%y
+Description: Displays the last two digits of the current year.
+
+	explanation of command:
+	date → Shows the date and time.
+	+%y → Displays the last two digits of the year (00-99)
+
+Output:
+{ ~ }  » date +%y                                                                            
+25
+
+
+04.To display the full weekday name
+------------------------------------
+Command: date +%A
+Description: Displays the full name of the current weekday.
+
+	explanation of command:
+	date → Shows the date and time.
+	+%A → Displays the full name of the weekday (eg: Sunday, Monday)
+
+Output:
+{ ~ }  » date +%A                                                                             
+Tuesday
+
+
+05.To display the Abbreviated Weekday Name
+-------------------------------------------
+Command: date +%a
+Description: Displays the abbreviated name of the current weekday (e.g., Mon, Tue, Wed).
+
+	explanation of command:
+	date → Shows the date and time.
+	+%a → Displays the abbreviated weekday name (e.g., Sun, Mon)
+
+Output:
+{ ~ }  » date +%a                                                                             
+Tue
+
+
+06.To display the Abbreviated Month Name
+-------------------------------------------
+Command: date +%b
+Description: Displays the abbreviated name of the current month (e.g., Jan, Feb, Mar).
+
+	explanation of command:
+	date → Shows the date and time.
+	+%b → Displays the abbreviated month name (e.g., Jan, Feb)
+
+Output:
+{ ~ }  » date +%b                                                                             
+Mar
+
+
+07.To display the Full Month Name
+-------------------------------------------
+Command: date +%B
+Description: Displays the full name of the current month.
+
+	explanation of command:
+	date → Shows the date and time.
+	+%B → Displays the full month name (e.g., January, February)
+
+Output:
+{ ~ }  » date +%B                                                                             
+March
+
+
+08.To display the month as a two-digit number
+----------------------------------------------
+Command: date +%m
+Description: Displays the month as a two-digit number (01-12).
+
+	explanation of command:
+	date → Shows the date and time.
+	+%m → Displays the month as a two-digit number (01-12)
+
+Output:
+{ ~ }  » date +%m                                                                             
+03
+
+
+09.To display the minute as a two-digit number
+----------------------------------------------
+Command: date +%M
+Description: %M displays the current minute (00-59).
+
+	explanation of command:
+	date → Displays the system date and time.
+	+%M → Extracts and displays the current minutes (00-59)
+
+Output:
+{ ~ }  » date +%M                                                                             
+06
+
+10.To display the Hour in 24-Hour Format
+-------------------------------------------
+Command: date +%H
+Description: Displays the current hour in 24-hour format (00-23)
+
+	explanation of command:
+	date → Displays the system date and time.
+	+%H → Extracts and displays the current hour in 24-hour format (00-23)
+
+Output:
+{ ~ }  » date +%H                                                                            
+11
+
+
+11.To display Abbreviated Month Name (Alias for %b)
+---------------------------------------------------
+Command: date +%h
+Description: %h is the same as %b, displaying the abbreviated month name.
+
+	explanation of command:
+	date → Displays the system date and time.
+	+%h → Extracts and displays the abbreviated Month name (Jan,Feb,Mar)
+
+Output:
+{ ~ }  » date +%h                                                                           
+Mar
+
+
+CREATING SHELL SCRIPT FILE (.sh)
+---------------------------------
+
+A .sh file is a Shell Script file used in Unix and Linux systems. It contains a series of commands written in Bash (Bourne Again Shell) or other shell languages like sh, zsh, or ksh. These scripts automate tasks, execute multiple commands sequentially, and can include loops, conditions, and functions.
+
+Key Features of .sh Files
+_________________________
+
+Shell Script: A .sh file is a script that runs in a shell environment (e.g., Bash, Zsh).
+
+Automation: Used to automate repetitive tasks.
+
+Executable: Requires execution permissions (chmod +x filename.sh).
+
+Contains Commands: Stores a sequence of shell commands.
+
+Supports Variables, Loops, and Functions: Allows complex scripting.
+
+
+Steps to create and execute a shell Script
+__________________________________________
+
+1.Create a new file using the vi editor.
+eg: vi prgrm1.sh
+
+2.Enter INSERT mode by pressing i and type the script.
+eg: The script used
+	echo "Who are you?"
+	read name
+	echo "Enter Number 1"
+	read x
+	echo "Enter Number 2"
+	read y
+	echo "Enter Number 3"
+	read z
+
+	sum=$(($x+$y+$z))
+	avg=$(($sum/3))
+
+	echo "Hi" $name
+	echo "Summation " $sum
+	echo "Average " $avg
+
+3.Save and exit by pressing Esc, typing :wq, and hitting Enter.
+4.Verify file creation by listing its details.
+eg:
+ls -l prgrm1.sh
+
+5.Grant execution permission to make the script runnable.
+eg: chmod 777 prgrm1.sh
+
+6.Confirm updated permissions to ensure execution rights are granted.
+eg:
+ls -l prgrm1.sh(It should display rwxrwxrwx)
+
+7.Run the script to execute the commands inside it.
+eg:
+./prgrm1.sh
+
+Output:
+{ ~ }  » ./prgrm1.sh                                                                            ~
+who are you?
+Adam
+Enter Number 1
+20
+Enter Number 2
+10
+Enter Number 3
+20
+Hi name
+Summation 50
+Average 16
+
+Reading 2 inputs from user and performing arithmetic operations using shell script
+___________________________________________________________________________________
+
+1.Created a shell script named arithmetic.sh
+	vi arithmetic.sh
+2.Entered the following script
+Script:
+3.Saved file
+4.Granted permission
+	chmod 777 arithmetic.sh
+5.Executed 
+	./arithmetic.sh 
+
+Output:
+{ ~ }  » ./arithmetic.sh                                                                        ~
+Enter Number 1
+20
+Enter Number 2
+2
+Addition 22
+Subtraction 18
+Multiplication 40
+Division 10
+
+
+
+
+
+
+
+
+
+
+
+
