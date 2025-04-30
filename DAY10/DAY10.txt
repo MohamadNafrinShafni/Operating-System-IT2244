@@ -1,0 +1,67 @@
+::Q01) fibanocci series
+[2021ict95@fedora ~]$ touch Q01.sh
+[2021ict95@fedora ~]$ chmod 777 Q01.sh
+[2021ict95@fedora ~]$ vi Q01.sh
+[2021ict95@fedora ~]$ ./Q01.sh
+
+:: vi Q01.sh
+
+echo "Enter the until how many numbers you want fibonacci series?"
+read num
+
+echo " "
+
+a=0
+b=1
+
+for((i=0;i<num;i++))
+do
+echo $a
+
+echo " "
+
+c=$(($a+$b))
+a=$b
+b=$c
+
+done
+
+
+::Q02)factorial
+
+[2021ict95@fedora ~]$ touch Q02.sh
+[2021ict95@fedora ~]$ chmod 777 Q02.sh
+[2021ict95@fedora ~]$ vi Q02.sh
+[2021ict95@fedora ~]$ ./Q02.sh
+
+::vi Q02.sh
+
+fact=1
+echo "Enter the number?"
+read num
+for((i=num;i>=1;i--))
+do
+ fact=$(($fact*$i))
+
+done
+
+echo " factorial of 5 is : " $fact
+
+::Q03)Multilplication table
+
+[2021ict95@fedora ~]$ touch Q03.sh
+[2021ict95@fedora ~]$ chmod 777 Q03.sh
+[2021ict95@fedora ~]$ vi Q03.sh
+[2021ict95@fedora ~]$ ./Q03.sh
+
+::vi Q03.sh
+
+let i=3
+while [ $i -le 50 ]
+do
+echo $i
+i=$(($i+3))
+done
+
+
+
