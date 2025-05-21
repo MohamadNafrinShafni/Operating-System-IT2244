@@ -1,0 +1,224 @@
+####if else#####
+if(condition)
+{
+ //body of if statement;
+
+}
+else{
+ // body of else statement;
+}
+1)
+Example: Enter your age and verify you eligible or not for the election voting using if else condition.
+
+#include<stdio.h>
+ int main(){
+int age = 0;
+printf("Enter your age:");
+scanf("%d",&age);
+
+if(age<18)
+{
+  printf("\nYou are not eligible to vote\n");
+
+}
+else{
+
+  printf("You are Eligible to vote");
+}
+return 0;
+
+}
+
+OUTPUT:
+[2021ict95@fedora ~]$ vi Vote.c
+[2021ict95@fedora ~]$ ./Vote
+Enter your age:45
+
+You are Eligible to vot
+
+
+2)#####Ternary Operator#####
+
+#include<stdio.h>
+ int main(){
+int age = 0;
+printf("Enter your age:");
+scanf("%d",&age);
+(age>=18)? printf("you can vote"):print("You are not eligible to vote");
+return 0;
+}
+
+2)#####Switch Operator#####
+switch (variable/expression){
+   case 1:
+   //body of case 1
+   break;
+
+   case 1:
+   //body of case 1
+   break;
+   
+   default:
+   //body of default
+   }
+   
+
+EX 1:
+
+Enter the value between 1 to 7 and create a program for following output:
+enter the number between 1 to 7:1
+Today is Sunday
+
+#include<stdio.h>
+int main()
+{
+number = 0;
+printf("Enter the number between 1 to 7");
+scanf("%d",&number);
+
+switch(value)
+{
+  case 1:
+  printf("Sunday");
+  break;
+  
+  case 2:
+  printf("Monday");
+  break;
+
+  case 3:
+  printf("Tuesday");
+  break;
+
+  case 4:
+  printf("Wednesday");
+  break;
+
+  case 5:
+  printf("Thursday");
+  break;
+
+  case 6:
+  printf("Friday");
+  break;
+
+  case 7:
+  printf("Saturday");
+  break;
+  
+  default:
+  printf("Invalid!");
+
+}
+
+return 0;
+}
+
+
+
+Q1.write a code for small astrology based on your life path number for that get date of birth from user than calculate life path number.(use switch case)
+Example:-
+Date: 23
+
+calculate for life path number:
+   a=date%10 3
+   b=date/10 2
+   c=a+b     5
+   
+if life path number :
+   1:Lucky
+   2:Carefully do your work
+   3.Stronger
+   4:Happy
+   5:Can get help
+   6:Doubt
+   7:sad
+   8:Like
+   9:Courage 
+   
+   
+   
+   
+4)
+Give list of numbers then calculate the summation and multiplication using for loop.
+1 2 3 4 5
+summation: 15
+multiplication: 120
+
+5)
+print the integers from 1 to 10 using while loop
+
+
+6)
+Write a c program to generate and the print the fibonacci series up to a specified numbe rof terms. 
+the program should take the number of terms as input from the user and then display the corresponding fibonacci sequence.
+
+#include <stdio.h>
+
+int main() {
+    int n, first = 0, second = 1, next;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Please enter a positive integer for the number of terms.\n");
+        return 1;
+    }
+
+    printf("Fibonacci Series up to %d terms: \n", n);
+    
+    if (n >= 1) {
+        printf("%d ", first);
+    }
+    if (n >= 2) {
+        printf("%d ", second);
+    }
+
+    for (int i = 3; i <= n; i++) {
+        next = first + second;
+        printf("%d ", next);
+        first = second;
+        second = next;
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+
+
+7)
+Write a C program to calculate the factorial of a given non - negative integer.
+
+#include <stdio.h>
+
+long long factorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a non-negative integer: ");
+    scanf("%d", &num);
+    if (num < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+    } else {
+        printf("Factorial of %d is %lld\n", num, factorial(num));
+    }
+    return 0;
+}
+
+
+8)
+Write a C program that:
+Accepts two strings as input from the user.
+Concatenates the two strings Displays the concatenated result.
+
+9)
+write a c program that takes a binary number (as an integer)
+ as input and converts it to its decimal equivalent.
