@@ -1,0 +1,82 @@
+Q1.
+cd %USERPROFILE%\Desktop
+mkdir CSC2244 Marks Exam
+cd CSC2244
+mkdir practical theory "exam papers"
+cd practical
+echo. > practical.txt
+type nul > practical.docx
+type nul > practical.pptx
+
+cd ..\theory
+echo. > theory.txt
+type nul > theory.docx
+type nul > theory.pptx
+
+cd ..\"exam papers"
+echo. > exam_papers.txt
+type nul > exam_papers.docx
+type nul > exam_papers.pptx
+
+move %USERPROFILE%\Desktop\"Icae Marks.xlsx" %USERPROFILE%\Desktop\Marks
+move %USERPROFILE%\Desktop\"Final Exam Marks.xlsx" %USERPROFILE%\Desktop\Marks
+
+xcopy %USERPROFILE%\Desktop\Marks %USERPROFILE%\Desktop\Exam\Marks /E /I
+attrib +h %USERPROFILE%\Desktop\Exam
+
+Q2.
+i.awk -F, 'NR==1 || $4 > 3.5' data.csv
+
+OUTPUT:
+[2021ict95@fedora ~]$ ./Q2.csv
+Name,Age,Department,GPA
+Priya,21,Environmentscience,3.7
+Carol,23,Physicalscience,3.99
+David,21,IT,3.98
+Riya,22,Physicalscience,3.6
+Rahman,21,Environmentscience,3.7
+Anna,23,Physicalscience,3.78
+Riyas,21,IT,3.76
+
+
+ii.awk -F, 'NR>1 {sum+=$4;count++}
+{if (count>0)print "Average GPA:",sum/count}' data.csv
+
+OUTPUT:
+[2021ict95@fedora ~]$ ./Q2second.sh
+Average GPA: 3.5
+Average GPA: 3.6
+Average GPA: 3.43333
+Average GPA: 3.5725
+Average GPA: 3.654
+Average GPA: 3.645
+Average GPA: 3.65286
+Average GPA: 3.44625
+Average GPA: 3.48333
+Average GPA: 3.511
+Average GPA: 3.19182
+
+
+Q3.
+echo "Enter String_1"
+read str1
+echo "Enter String_2"
+read str2
+
+len1=${#str1}
+len2=${#str2}
+
+if [ $len1 -gt $len2 ]; then
+    echo "$str1 is larger than $str2"
+else
+    echo "$str2 is larger than $str1"
+fi
+
+OUTPUT:
+[2021ict95@fedora ~]$ ./Q3.sh
+Enter String_1
+Apple
+Enter String_2
+Banana
+Banana is larger than Apple
+
