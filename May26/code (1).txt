@@ -1,0 +1,216 @@
+#include<stdio.h>
+#include<stdlib.h>  //for exit()
+#include<unistd.h>  //for sleep()
+
+int main()
+{
+   printf("Program started.\n");
+   
+   printf("Sleeping for 3 sec\n ");
+   sleep(3);  //pause for 3 seconds
+   
+   printf("Exiting the program");
+   exit(0); // clean exit
+
+return 0;
+
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+#include<stdlib.h>   
+#include<unistd.h>
+#include<sys/wait.h>  // for wait()
+
+
+int main()
+{
+  pid_t pid;
+  
+  printf("Parent process started PID : %d\n",getpid());
+  
+  pid=fork();
+  
+  if(pid<0)
+  {
+    perror("Fork failed");
+	exit(1);
+  
+  
+  }
+  
+  if(pid==0)
+  {
+   //child process
+   
+   printf("Child process PID: %d,sleeping for 2 seconds",getpid() );
+   sleep(2);
+   printf("Child process exiting.\n");
+   exit(0);
+   }
+   
+   else
+   {
+     //parent process
+	 
+	 int status;
+	 printf("parent waiting for child to finish...\n");
+	 wait(&status); // wait for child to finish
+	 
+	 if(WIFEXITED(status))
+	 {
+	   printf("Child exited with status: %d\n",WEXITSTATUS(status));
+	 
+	 }
+	 
+	 else
+	 {
+	    printf("Child did not exit normally.\n");
+	 
+	 }
+	 
+	 printf("Parent process ending.\n");
+   
+   
+   }
+   
+     return 0;
+   
+  
+  }
+
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//first child :slept for 1 seconds
+//second child :slept for 3 seconds
+//parent:both children have finished
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {
+    pid_t pid1, pid2;
+
+    pid1 = fork();
+
+    if(pid1 == 0) {
+        // First child process
+        sleep(1);
+        printf("First child: Slept for 1 second\n");
+        _exit(0);
+    } else {
+        pid2 = fork();
+
+        if(pid2 == 0) {
+            // Second child process
+            sleep(3);
+            printf("Second child: Slept for 3 seconds\n");
+            _exit(0);
+        } else {
+            // Parent process
+            wait(NULL); // wait for one child
+            wait(NULL); // wait for other child
+            printf("Parent: Both children have finished\n");
+        }
+    }
+
+    return 0;
+}
+
+ 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+first child:sleeps for 2 seconds,exits with status 2
+second child:sleeps for 1 seconds,exits with status 1
+parent: waits twice,and prints which child(by PID or exit code)
+finished first and second
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {
+    pid_t pid1, pid2;
+    int status;
+
+    pid1 = fork();
+
+    if(pid1 == 0) {
+        // First child process
+        sleep(2);
+        printf("First child: Slept for 2 seconds, exiting with status 2\n");
+        _exit(2);
+    } else {
+        pid2 = fork();
+
+        if(pid2 == 0) {
+            // Second child process
+            sleep(1);
+            printf("Second child: Slept for 1 second, exiting with status 1\n");
+            _exit(1);
+        } else {
+            // Parent process
+            pid_t finished_child;
+
+            finished_child = wait(&status);
+            printf("Parent: Child with PID %d finished first with exit status %d\n", finished_child, WEXITSTATUS(status));
+
+            finished_child = wait(&status);
+            printf("Parent: Child with PID %d finished second with exit status %d\n", finished_child, WEXITSTATUS(status));
+        }
+    }
+
+    return 0;
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+the parent creates a child process
+the child creates a grandchild process
+the grandchild sleep 2 seconds and exits with status 2
+the child waits for the grandchild,prints its exit status
+then exits with status 55 
+
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {
+    pid_t child_pid, grandchild_pid;
+    int status;
+
+    child_pid = fork();
+
+    if(child_pid == 0) {
+        // Child process
+        grandchild_pid = fork();
+
+        if(grandchild_pid == 0) {
+            // Grandchild process
+            sleep(2);
+            printf("Grandchild: Slept for 2 seconds, exiting with status 2\n");
+            _exit(2);
+        } else {
+            // Child process waiting for grandchild
+            wait(&status);
+            printf("Child: Grandchild with PID %d finished with exit status %d\n", grandchild_pid, WEXITSTATUS(status));
+            _exit(55);
+        }
+    } else {
+        // Parent process waiting for child
+        wait(&status);
+        printf("Parent: Child with PID %d finished with exit status %d\n", child_pid, WEXITSTATUS(status));
+    }
+
+    return 0;
+}
