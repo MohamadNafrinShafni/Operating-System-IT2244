@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+// Global variables as per requirement
+int X, Y, Z;
+
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+void fibonacci(int n) {
+    int a = 0, b = 1, next;
+    printf("Fibonacci series: %d %d", a, b);
+    for (int i = 2; i < n; i++) {
+        next = a + b;
+        printf(" %d", next);
+        a = b;
+        b = next;
+    }
+    printf("\n");
+}
+
+int is_prime(int num) {
+    if (num <= 1) return 0;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return 0;
+    }
+    return 1;
+}
+
+int main() {
+    printf("Enter number X (for factorial): ");
+    scanf("%d", &X);
+    printf("Enter number Y (for Fibonacci): ");
+    scanf("%d", &Y);
+    printf("Enter number Z (to check prime): ");
+    scanf("%d", &Z);
+
+    printf("Process A (Parent) PID: %d\n", getpid());
+
+    int f1 = fork();
+
+    if (f1 == 0) {
+        // Child X - factorial
+        printf("Process B (Child X) PID: %d, Parent PID: %d\n", getpid(), getppid());
+        printf("Factorial of %d is %d\n", X, factorial(X));
+    } else {
+        int f2 = fork();
+
+        if (f2 == 0) {
+            // Child Y - Fibonacci and Prime check
+            printf("Process C (Child Y) PID: %d, Parent PID: %d\n", getpid(), getppid());
+            printf("Fibonacci series of %d: ", Y);
+            fibonacci(Y);
+            if (is_prime(Z)) {
+                printf("%d is a prime number.\n", Z);
+            } else {
+                printf("%d is not a prime number.\n", Z);
+            }
+        } else {
+            // Parent waits for both children
+            wait(NULL);
+            wait(NULL);
+        }
+    }
+
+    return 0;
+}
