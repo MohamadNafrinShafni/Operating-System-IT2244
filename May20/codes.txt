@@ -1,0 +1,95 @@
+
+fork()-->copy a process
+pid of child process -->0
+
+01
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+	printf("\nHello World");
+	int f=fork();
+	int p=getpid();
+
+	printf("\n The pid is %d",p);
+	printf("\n The pid is %d",f);
+	return 0;
+}
+
+
+
+
+ 
+
+02
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+	
+	fork();
+	fork();
+	printf("\nHello World\n");
+	return 0;
+}
+
+03
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+	
+	printf("\nHello!");
+	int f=fork();
+	if(f==0)
+	{
+		printf(" I am child.\n");
+	}
+	else
+	{
+		printf(" I am parent.\n");
+	}
+	return 0;
+}
+
+
+
+.
+
+04
+
+
+#include<stdio.h>
+#include<unistd.h>
+int main()
+{
+	int p=getpid();
+	int f=fork();
+	if(f==0)
+	{
+		printf("I'm child ");
+		printf("My parent id: %d\n",getppid());
+	}
+	
+	else
+	{
+		int f1=fork();
+		if(f1==0)
+		{
+			printf("I'm sibiling ");
+			printf("My parent id: %d\n",getppid());
+		}
+		
+		else
+		{
+			printf("I am parent ");
+			printf("Parent id:%d , ",getpid());
+			printf("My parent id: %d\n",getppid());
+		}
+	}
+	return 0;
+	
+}
+
+
+
+
+
+
