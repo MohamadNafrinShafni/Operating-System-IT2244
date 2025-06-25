@@ -1,0 +1,20 @@
+9.write a shell script to read n numbers as command arguments and sort them in decending order
+10.write a shell script to generat a marksheet of a student.
+Take 3 subjects, calculate and display the total marks, average and grades of each subject obtained by the student.
+11.write a shell script to display the multiplication table of a given number.
+12.write a shell script to find the factorial of the given number n.
+16.write a shell script to find whether the given year is a leap year or not.
+17.write a shell script to wish for a birthday if the current date and month are the same as the date of birth received from the user.
+
+1parent child Q
+A is a parent which has two child B and C childern B want to get user input from user read number a and b and send it to child c and c want to calculate addition subtraction multiplication and division after that it want to send the out put to the parent A 
+parent A want to display the out put ...and parent A want tell I am parent and My parent Id ,child B and C want tell I am child and My parent Id 
+
+Parent A prints its message first.
+Child B prints its message.
+Child C prints its message.
+Child B reads input.
+after B send the inputs a and b to C 
+C calculate addition,Subtraction,Multiplication,Division
+C send the out put to A
+Parent A finally prints the results.
